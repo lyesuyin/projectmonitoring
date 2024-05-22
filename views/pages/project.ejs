@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Monitoring Portal</title>
+    <link rel="stylesheet" href="style.css">
+    <style>body{font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, sans-serif;}</style>
+</head>
+<body>
+    <h1>CDB/IB Project Progress Tracker</h1><br><br><br>
+    
+    <h3>Welcome to Strategic Resourcing's Project Monitoring Portal. You may submit the latest achievements of your ongoing CDB/IB projects here.</h3><br>
+  
+
+    <p id="projDetails">Your project details are displayed below:</p><p id="submit">Please submit your latest achievement:</p><p id="thankYou">Thank you for your submission. Your updated project details are displayed below:</p><br><br><br>
+    <h1>Project Details</h1>
+
+    <% if (project) { %>
+        <table>
+            <thead>
+                <tr>
+                    <% Object.keys(project).forEach(key => { %>
+                        <th><%= key %></th>
+                    <% }) %>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <% Object.values(project).forEach(value => { %>
+                        <td><%= value %></td>
+                    <% }) %>
+                </tr>
+            </tbody>
+        </table>
+    <% } else { %>
+        <p>No project data available.</p>
+    <% } %>
+
+    <a href="/">Back to Home</a>
+    
+    
+    
+    <button id="backButton1"><--Go Back</button>
+    <button id="nextButton">Next--></button>
+    <button id="backButton2"><--Go Back</button>
+    <button id="submitButton">Submit!</button>
+    
+    <button id="newFormButton">Click here to submit a new form</button>
+    
+    
+    
+    <script src="script.js"></script>
+</body>
+</html>
+
