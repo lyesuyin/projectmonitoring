@@ -8,31 +8,45 @@
     <style>body{font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, sans-serif;}</style>
 </head>
 <body>
-    <h1>CDB/IB Project Progress Tracker</h1><br><br><br>
+    <h1>CDB/IB Project Progress Tracker</h1>
     
     <h3>Welcome to Strategic Resourcing's Project Monitoring Portal. You may submit the latest achievements of your ongoing CDB/IB projects here.</h3><br>
   
 
-    <p id="projDetails">Your project details are displayed below:</p><p id="submit">Please submit your latest achievement:</p><p id="thankYou">Thank you for your submission. Your updated project details are displayed below:</p><br><br><br>
-    <h1>Project Details</h1>
+    <p id="projDetails">Your project details are displayed below:</p>
 
     <% if (project) { %>
-        <table>
+        <table id = "table-container">
             <thead>
-                <tr>
-                    <% Object.keys(project).forEach(key => { %>
-                        <th><%= key %></th>
-                    <% }) %>
-                </tr>
+              <tr>
+                <% const columnTitles = ['Project ID', 'Project Name', 'Approved Funding', 'Approved MMF', 'Outcome Metric', 'Target', '6-mth Achievement', '1-yr Achievement','1.5-yr Achievement', '2-yr Achievement', '2.5-yr Achievement', '3-yr Achievement']; /* Pre-defined column titles */ %>
+                <% let nonNullFieldCount = 0; %>
+                <% for (const key in project) { %>
+                  <% if (key !== 'id' && project[key] !== null) { %>
+                    <th><%= columnTitles[nonNullFieldCount] %></th>
+                    <% nonNullFieldCount++; %>
+                  <% } %>
+                <% } %>
+                <!-- Additional column with dynamic header -->
+                <th><%= columnTitles[nonNullFieldCount] %></th>
+              </tr>
             </thead>
             <tbody>
-                <tr>
-                    <% Object.values(project).forEach(value => { %>
-                        <td><%= value %></td>
-                    <% }) %>
-                </tr>
+              <tr>
+                <% for (const key in project) { %>
+                  <% if (key !== 'id' && project[key] !== null) { %>
+                    <td><%= project[key] %></td>
+                  <% } %>
+                <% } %>
+                <!-- Additional column with input field and submit button -->
+                <td>
+                  <input type="text" id="additionalInput" placeholder="Enter value">
+                  <input type="hidden" id="projectID2" name="projectID" value="<%= project.projectID %>">
+                  <button id="submitButton">Submit</button>
+                </td>
+              </tr>
             </tbody>
-        </table>
+          </table>
     <% } else { %>
         <p>No project data available.</p>
     <% } %>
@@ -41,7 +55,6 @@
     
     
     
-    <button id="backButton1"><--Go Back</button>
     <button id="nextButton">Next--></button>
     <button id="backButton2"><--Go Back</button>
     <button id="submitButton">Submit!</button>
