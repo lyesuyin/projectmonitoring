@@ -10,7 +10,14 @@
 <body>
     <h1>CDB/IB Project Progress Tracker</h1>
     
-    <h3>Welcome to Strategic Resourcing's Project Monitoring Portal. You may submit the latest achievements of your ongoing CDB/IB projects here.</h3><br>
+
+    <% if (submitRoute) { %>
+        <!-- Elements to display when rendered from /submit route -->
+        <p>Thank you for submitting your achievement! Please see your updated project details below:</p>
+    <% } else { %>
+        <!-- Elements to display when rendered from /thanks route -->
+        <p>Your project achievement has already been submitted and successfully recorded. Please see your updated project details below:</p>
+    <% } %>
   
 
     <% if (project) { %>
@@ -20,7 +27,7 @@
                 <% const columnTitles = ['Project ID', 'Project Name', 'Approved Funding', 'Approved MMF', 'Outcome Metric', 'Target', '6-mth Achievement', '1-yr Achievement','1.5-yr Achievement', '2-yr Achievement', '2.5-yr Achievement', '3-yr Achievement']; /* Pre-defined column titles */ %>
                 <% let nonNullFieldCount = 0; %>
                 <% for (const key in project) { %>
-                  <% if (key !== 'id' && project[key] !== null) { %>
+                  <% if (key !== 'id' && key !== 'hasSubmitted' && project[key] !== null) { %>
                     <th><%= columnTitles[nonNullFieldCount] %></th>
                     <% nonNullFieldCount++; %>
                   <% } %>
@@ -30,7 +37,7 @@
             <tbody>
               <tr>
                 <% for (const key in project) { %>
-                  <% if (key !== 'id' && project[key] !== null) { %>
+                  <% if (key !== 'id' && key !== 'hasSubmitted' && project[key] !== null) { %>
                     <td><%= project[key] %></td>
                   <% } %>
                 <% } %>

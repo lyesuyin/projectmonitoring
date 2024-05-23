@@ -26,39 +26,50 @@ app.get('/', function(req, res) {
 
 // Handle form submission
 app.post('/submit', async (req, res) => {
-    const projectID = req.body.projectID;
+  const projectID = req.body.projectID;
 
-    try {
-        // Query the database to check if the projectID exists
-        const project = await prisma.Post.findUnique({
-            where: { projectID: projectID }
-        });
-        console.log('Project data:', project);
-        if (project) {
-            // Render the project.ejs template with the project data
-            res.render('pages/project', { project });
-        } else {
-            // Render the home.ejs template with an error message
-            res.render('pages/home', { error: 'Project ID not found.' });
-        }
-    } catch (error) {
-        console.error('Error querying the database:', error);
-        res.render('pages/home', { error: 'An error occurred while querying the database.' });
+  try {
+      // Query the database to check if the projectID exists
+      const project = await prisma.Post.findUnique({
+          where: { projectID: projectID }
+      });
+      console.log('Project data:', project);
+
+      if (!project) {
+        // Render the home.ejs template with an error message
+        return res.render('pages/home', { error: 'Project ID not found.' });
     }
+
+      if (project) {
+          // Check if hasSubmitted field is true
+          if (project.hasSubmitted) {
+              // Render the home.ejs template with an error message
+              return res.render('pages/thanks', { project, submitRoute: false });
+          } else {
+              // Render the project.ejs template with the project data
+              return res.render('pages/project', { project });
+          }
+      } else {
+          // Render the home.ejs template with an error message
+          return res.render('pages/home', { project }, { error: 'Project ID not found.' });
+      }
+  } catch (error) {
+      console.error('Error querying the database:', error);
+      return res.render('pages/home', { error: 'An error occurred while querying the database.' });
+  }
 });
+
 
 app.post('/submitDynamicTable', async (req, res) => {
     const { projectID, inputValue } = req.body;
   
     try {
+
       // Retrieve the project from the database
       const project = await prisma.Post.findUnique({
         where: { projectID: projectID }
       });
   
-      if (!project) {
-        return res.status(404).send('Project not found');
-      }
   
       // Find the first null column
       const fields = ['ach6Mth', 'ach12Mth', 'ach18Mth', 'ach24Mth', 'ach30Mth', 'ach36Mth'];
@@ -78,8 +89,11 @@ app.post('/submitDynamicTable', async (req, res) => {
       // Update the project in the database
       await prisma.Post.update({
         where: { projectID: projectID },
-        data: updateData
-      });
+        data: {
+          ...updateData,
+          hasSubmitted: true // Set hasSubmitted to TRUE
+      }
+  });
   
     // Retrieve the updated project data
     const updatedProject = await prisma.Post.findUnique({
@@ -88,7 +102,7 @@ app.post('/submitDynamicTable', async (req, res) => {
 
     // Render the thanks page with the updated project data
     console.log('Rendering thanks page with updated project data:', updatedProject);
-    res.render('pages/thanks', { project: updatedProject });
+    res.render('pages/thanks', { project: updatedProject, submitRoute: true });
   } catch (error) {
     console.error('Error processing form submission:', error);
     if (!res.headersSent) {
@@ -96,6 +110,26 @@ app.post('/submitDynamicTable', async (req, res) => {
     }
   }
 });
+
+app.get('/thanks', async (req, res) => {
+  const projectID = req.query.projectID;
+  try {
+    // Retrieve the updated project data
+    const updatedProject = await prisma.Post.findUnique({
+      where: { projectID: projectID }
+    });
+
+    if (!updatedProject) {
+      return res.status(404).send('Project not found');
+    }
+
+    res.render('pages/thanks', { project: updatedProject, submitRoute: true });
+  } catch (error) {
+    console.error('Error retrieving updated project data:', error);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
 
 
 // Start the server

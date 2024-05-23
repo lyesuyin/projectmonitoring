@@ -22,7 +22,7 @@
                 <% const columnTitles = ['Project ID', 'Project Name', 'Approved Funding', 'Approved MMF', 'Outcome Metric', 'Target', '6-mth Achievement', '1-yr Achievement','1.5-yr Achievement', '2-yr Achievement', '2.5-yr Achievement', '3-yr Achievement']; /* Pre-defined column titles */ %>
                 <% let nonNullFieldCount = 0; %>
                 <% for (const key in project) { %>
-                  <% if (key !== 'id' && project[key] !== null) { %>
+                  <% if (key !== 'id' && key !== 'hasSubmitted' && project[key] !== null) { %>
                     <th><%= columnTitles[nonNullFieldCount] %></th>
                     <% nonNullFieldCount++; %>
                   <% } %>
@@ -34,7 +34,7 @@
             <tbody>
               <tr>
                 <% for (const key in project) { %>
-                  <% if (key !== 'id' && project[key] !== null) { %>
+                  <% if (key !== 'id' && key !== 'hasSubmitted' && project[key] !== null) { %>
                     <td><%= project[key] %></td>
                   <% } %>
                 <% } %>
@@ -52,15 +52,7 @@
     <% } %>
 
     <a href="/">Back to Home</a>
-    
-    
-    
-    <button id="nextButton">Next--></button>
-    <button id="backButton2"><--Go Back</button>
-    <button id="submitButton">Submit!</button>
-    
-    <button id="newFormButton">Click here to submit a new form</button>
-    
+
     
     
     <script src="script.js"></script>

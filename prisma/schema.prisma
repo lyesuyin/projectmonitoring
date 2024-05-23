@@ -21,4 +21,5 @@ model Post {
   ach24Mth        String?
   ach30Mth        String?
   ach36Mth        String?
+  hasSubmitted    Boolean @default(false)
 }
