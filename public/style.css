@@ -4,13 +4,28 @@
     
     }
 
-    table {
-        border-collapse: collapse;
-        width: 100%;
-    }
-    th, td {
-        border: 1px solid black;
-        padding: 8px;
-        text-align: left;
-    }
+/* CSS for the table */
+table {
+    width: 100%; /* Make the table fill the container */
+    border-collapse: collapse; /* Collapse the borders between cells */
+    table-layout: fixed; /* Fix the table layout */
+}
 
+/* CSS for table headers */
+th {
+    background-color: #f2f2f2; /* Background color for headers */
+    text-align: left; /* Align header text to the left */
+    padding: 8px; /* Add padding to the header cells */
+    border: 1px solid #ddd; /* Add border to the header cells */
+}
+
+/* CSS for table data cells */
+td {
+    padding: 8px; /* Add padding to the data cells */
+    border: 1px solid #ddd; /* Add border to the data cells */
+}
+
+/* Optional: Style alternating rows differently */
+tr:nth-child(even) {
+    background-color: #f9f9f9; /* Background color for even rows */
+}
