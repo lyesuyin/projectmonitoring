@@ -6,7 +6,8 @@
 
 /* CSS for the table */
 table {
-    width: 100%; /* Make the table fill the container */
+    width: 90%; /* Make the table fill the container */
+    margin: 0 auto; /* Center the table horizontally */
     border-collapse: collapse; /* Collapse the borders between cells */
     table-layout: fixed; /* Fix the table layout */
 }
@@ -14,7 +15,7 @@ table {
 /* CSS for table headers */
 th {
     background-color: #f2f2f2; /* Background color for headers */
-    text-align: left; /* Align header text to the left */
+    text-align: centre; /* Align header text to the left */
     padding: 8px; /* Add padding to the header cells */
     border: 1px solid #ddd; /* Add border to the header cells */
 }
