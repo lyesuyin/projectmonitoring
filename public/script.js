@@ -2,6 +2,15 @@ document.getElementById('submitButton').addEventListener('click', submitValue);
 
     async function submitValue(event) {
       event.preventDefault(); // Prevent default form submission
+
+      // Show confirmation dialog
+      const userConfirmed = window.confirm('Are you sure you want to submit the value?');
+        
+      if (!userConfirmed) {
+        // User clicked "Cancel", abort the function
+        return;
+      }
+      
       const inputValue = document.getElementById('additionalInput').value;
       const projectID = document.getElementById('projectID2').value; // Get the projectID from the hidden input
 

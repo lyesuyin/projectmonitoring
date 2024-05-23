@@ -81,13 +81,21 @@ app.post('/submitDynamicTable', async (req, res) => {
         data: updateData
       });
   
-      res.send('Value submitted successfully');
-    } catch (error) {
-      console.error('Error processing form submission:', error);
+    // Retrieve the updated project data
+    const updatedProject = await prisma.Post.findUnique({
+      where: { projectID: projectID }
+    });
+
+    // Render the thanks page with the updated project data
+    console.log('Rendering thanks page with updated project data:', updatedProject);
+    res.render('pages/thanks', { project: updatedProject });
+  } catch (error) {
+    console.error('Error processing form submission:', error);
+    if (!res.headersSent) {
       res.status(500).send('Internal Server Error');
     }
-  });
-
+  }
+});
 
 
 // Start the server

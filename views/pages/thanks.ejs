@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Monitoring Portal</title>
+    <link rel="stylesheet" href="style.css">
+    <style>body{font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, sans-serif;}</style>
+</head>
+<body>
+    <h1>CDB/IB Project Progress Tracker</h1>
+    
+    <h3>Welcome to Strategic Resourcing's Project Monitoring Portal. You may submit the latest achievements of your ongoing CDB/IB projects here.</h3><br>
+  
+
+    <% if (project) { %>
+        <table id = "table-container">
+            <thead>
+              <tr>
+                <% const columnTitles = ['Project ID', 'Project Name', 'Approved Funding', 'Approved MMF', 'Outcome Metric', 'Target', '6-mth Achievement', '1-yr Achievement','1.5-yr Achievement', '2-yr Achievement', '2.5-yr Achievement', '3-yr Achievement']; /* Pre-defined column titles */ %>
+                <% let nonNullFieldCount = 0; %>
+                <% for (const key in project) { %>
+                  <% if (key !== 'id' && project[key] !== null) { %>
+                    <th><%= columnTitles[nonNullFieldCount] %></th>
+                    <% nonNullFieldCount++; %>
+                  <% } %>
+                <% } %>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <% for (const key in project) { %>
+                  <% if (key !== 'id' && project[key] !== null) { %>
+                    <td><%= project[key] %></td>
+                  <% } %>
+                <% } %>
+              </tr>
+            </tbody>
+          </table>
+    <% } else { %>
+        <p>No project data available.</p>
+    <% } %>
+
+    <a href="/">Back to Home</a>
+    
+
+</body>
+</html>
+
