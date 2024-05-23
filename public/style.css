@@ -55,7 +55,7 @@ tr:nth-child(even) {
 }
 
 
-footer {
+footer p {
     position: fixed; /* Fixed position */
     margin: 0 auto; /* Center the table horizontally */
     bottom: 0; /* Align to the bottom of the viewport */
