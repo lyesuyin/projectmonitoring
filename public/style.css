@@ -30,3 +30,9 @@ td {
 tr:nth-child(even) {
     background-color: #f9f9f9; /* Background color for even rows */
 }
+
+#additionalInput {
+    width: 100px; /* Set a specific width for the input field */
+    height: 30px;
+    background-color: lightgray
+}
