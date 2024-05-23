@@ -48,7 +48,7 @@ tr:nth-child(even) {
 
 #additionalInput {
     width: 90%; /* Adjust width as needed */
-    height: 90% 
+    height: 90%; 
     padding: 8px; /* Add some padding for better appearance */
     border-radius: 10px; /* Rounded edges */
     background-color: #f0f0f0; /* Light grey background color */
