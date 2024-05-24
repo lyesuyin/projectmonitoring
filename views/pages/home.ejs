@@ -5,30 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Monitoring Portal</title>
     <link rel="stylesheet" href="/style.css">
-    <style>body{font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, sans-serif;}</style>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 </head>
 <body>
-    <h1>CDB/IB Project Progress Tracker</h1>
-    
-    <h3>Welcome to Strategic Resourcing's Project Monitoring Portal. You may submit the latest achievements of your ongoing CDB/IB projects here.</h3><br>
-  
+    <div class="sidenav">
+        <div class="login-main-text">
+           <h2>IB/CDB<br> PROJECT PROGRESS TRACKER</h2>
+           <p>Submit your latest achievements here.</p>
+        </div>
+     </div>
+     <div class="main">
+        <div class="col-md-6 col-sm-12">
+            <div class="login-form">
+                <p id="start">To begin, please key in your Project ID below:</p>
+                <form id="projectIDForm" action="/submit" method="POST">
+                  <div class="form-group">
+                     <input type="text" id="projectID" name="projectID" placeholder="Project ID">
+                  </div>
+                  <button type="submit" id="start class="btn btn-black">Submit</button>
+                  
+                </form>
+            </div><br>
+            <% if (typeof error !== 'undefined') { %>
+                <p style="color: red;"><%= error %></p>
+            <% } %>
+            <footer>
+                <p><b>Disclaimer:</b> This website is created for learning purposes only. The information provided here should not be considered professional advice. Please note that we make no guarantees regarding the accuracy, completeness, or reliability of the contents of this website. Any actions you take based on the contents of this website are at your own risk. We are not liable for any losses or damages incurred from the use of this website.</p>
+            </footer> 
+        </div>
+      </div>
 
-    <p id="start">To begin, please key in your Project ID below:</p><br>
     
-    <form id="projectIDForm" action="/submit" method="POST">
-        <input type="text" id="projectID" name="projectID" required placeholder="Project ID">
-        <button type="submit" id="start">Submit</button>
-    </form>
-
-    <% if (typeof error !== 'undefined') { %>
-        <p style="color: red;"><%= error %></p>
-    <% } %>
     
-    <footer>
-        <p><b>Disclaimer:</b> This website is created for learning purposes only. The information provided here should not be considered professional advice. Please note that we make no guarantees regarding the accuracy, completeness, or reliability of the contents of this website. Any actions you take based on the contents of this website are at your own risk. We are not liable for any losses or damages incurred from the use of this website.</p>
-    </footer>
+    
 
-    <script src="script.js"></script>
 </body>
 
 

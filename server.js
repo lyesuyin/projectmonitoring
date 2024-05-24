@@ -28,6 +28,11 @@ app.get('/', function(req, res) {
 app.post('/submit', async (req, res) => {
   const projectID = req.body.projectID;
 
+  if (!projectID || projectID.trim() === '') {
+    // Render the home.ejs template with an error message
+    return res.render('pages/home', { error: 'Project ID cannot be blank.' });
+  }
+
   try {
       // Query the database to check if the projectID exists
       const project = await prisma.Post.findUnique({

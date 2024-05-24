@@ -1,8 +1,104 @@
-* {
-    
-    text-align: center;
-    
+
+body {
+    font-family: "Lato", sans-serif;
+    font-size: 1.2em;
+}
+
+
+
+.main-head{
+    height: 150px;
+    background: #FFF;
+   
+}
+
+.sidenav {
+    height: 100%;
+    background-color: #000;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+
+.main {
+    padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+}
+
+@media screen and (max-width: 450px) {
+    .login-form{
+        margin-top: 10%;
     }
+
+    .register-form{
+        margin-top: 10%;
+    }
+}
+
+@media screen and (min-width: 768px){
+    .main{
+        margin-left: 40%; 
+    }
+
+    .sidenav{
+        width: 40%;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+    }
+
+    .login-form{
+        margin-top: 77%;
+        
+    }
+
+    .register-form{
+        margin-top: 20%;
+    }
+
+    .main footer{
+        margin-top: 20%;
+    }
+}
+
+
+.login-form p{
+    font-size: 1.2em; 
+}
+
+.login-main-text{
+    margin-top: 30%;
+    padding: 60px;
+    color: #fff;
+}
+
+.login-main-text h2{
+    font-weight: bolder;
+    font-size: 4.5em;
+    font-family: "Helvetica", sans serif;
+    line-height: 0.95;
+}
+
+.login-main-text p{
+    font-weight: bolder;
+    font-size: 1.2em;
+    font-family: "Helvetica", sans serif;
+    line-height: 2.5;
+}
+
+.btn-black{
+    background-color: #000 !important;
+    color: #fff;
+}
+
+
+
+
+
 
 h1 {
         background-color: rgba(35, 179, 136, 0.365);
@@ -64,13 +160,13 @@ footer p {
     position: fixed; /* Fixed position */
     margin: 0 auto; /* Center the table horizontally */
     bottom: 0; /* Align to the bottom of the viewport */
-    width: 100%; /* Full width */
+    width: 60%; /* Full width */
     background-color: #c9c3c31f; 
     color: #15070793; /* White font color */
     padding: 5px; /* Add padding for spacing */
-    text-align: center; /* Center-align text */
+    text-align: left; /* Center-align text */
     font-size: smaller; /* Smaller font size */
     font-style: italic; /* Italics */
-    left: 50%; /* Position the left edge at the center */
-    transform: translateX(-50%); /* Adjust to center */
+    right: 0; /* Position the left edge at the center */
+    z-index: 1000; /* Bring the footer to the front */
 }
