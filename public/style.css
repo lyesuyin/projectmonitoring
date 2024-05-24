@@ -96,7 +96,20 @@ body {
 }
 
 
-
+#homeFooter {
+    position: fixed; /* Fixed position */
+    margin: 0 auto; /* Center the table horizontally */
+    bottom: 0; /* Align to the bottom of the viewport */
+    width: 60%; /* Full width */
+    background-color: #c9c3c31f; 
+    color: #15070793; /* White font color */
+    padding: 5px; /* Add padding for spacing */
+    text-align: left; /* Center-align text */
+    font-size: smaller; /* Smaller font size */
+    font-style: italic; /* Italics */
+    right: 0; /* Position the left edge at the center */
+    z-index: 1000; /* Bring the footer to the front */
+}
 
 
 
@@ -160,13 +173,13 @@ footer p {
     position: fixed; /* Fixed position */
     margin: 0 auto; /* Center the table horizontally */
     bottom: 0; /* Align to the bottom of the viewport */
-    width: 60%; /* Full width */
+    width: 100%; /* Full width */
     background-color: #c9c3c31f; 
     color: #15070793; /* White font color */
     padding: 5px; /* Add padding for spacing */
-    text-align: left; /* Center-align text */
+    text-align: center; /* Center-align text */
     font-size: smaller; /* Smaller font size */
     font-style: italic; /* Italics */
-    right: 0; /* Position the left edge at the center */
-    z-index: 1000; /* Bring the footer to the front */
+    left: 50%; /* Position the left edge at the center */
+    transform: translateX(-50%); /* Adjust to center */
 }
