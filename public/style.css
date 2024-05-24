@@ -159,7 +159,7 @@ h3 {
 
 /* CSS for the table */
 table {
-    width: 90%; /* Make the table fill the container */
+    width: 95%; /* Make the table fill the container */
     margin: 0 auto; /* Center the table horizontally */
     border-collapse: collapse; /* Collapse the borders between cells */
     table-layout: fixed; /* Fix the table layout */
@@ -179,6 +179,7 @@ td {
     padding: 12px; /* Add padding to the data cells */
     border: 1px solid #ddd; /* Add border to the data cells */
     text-align: center;
+    word-wrap: break-word;
 }
 
 /* Optional: Style alternating rows differently */
