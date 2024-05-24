@@ -1,7 +1,7 @@
 
 body {
     font-family: "Lato", sans-serif;
-    font-size: 1.2em;
+    font-size: 1.15em;
 }
 
 
@@ -65,9 +65,23 @@ body {
     }
 }
 
+.form-group {
+    display: flex; /* Use flexbox to align items */
+    align-items: center; /* Center items vertically */
+}
+
+.form-group input[type="text"] {
+    width: 200px; /* Set a fixed width for the input field */
+    margin-right: 20px; /* Add some space between the input and button */
+}
+
+.form-group button {
+    white-space: nowrap; /* Prevent the button text from wrapping */
+}
+
 
 .login-form p{
-    font-size: 1.2em; 
+    font-size: 1.15em; 
 }
 
 .login-main-text{
@@ -93,36 +107,48 @@ body {
 .btn-black{
     background-color: #000 !important;
     color: #fff;
+    font-size: 0.95em; 
+    margin-top: 5px; /* Add some space above the content */
 }
-
 
 #homeFooter {
-    position: fixed; /* Fixed position */
-    margin: 0 auto; /* Center the table horizontally */
-    bottom: 0; /* Align to the bottom of the viewport */
-    width: 60%; /* Full width */
-    background-color: #c9c3c31f; 
-    color: #15070793; /* White font color */
-    padding: 5px; /* Add padding for spacing */
-    text-align: left; /* Center-align text */
+    width: 60%; /* Specify the width of the footer */
+    background-color: #c9c3c31f; /* Background color */
+    color: #15070793; /* Text color */
+    padding: 5px; /* Padding for spacing */
+    text-align: left; /* Text alignment */
     font-size: smaller; /* Smaller font size */
     font-style: italic; /* Italics */
-    right: 0; /* Position the left edge at the center */
+    position: fixed; /* Fixed position */
+    bottom: 0; /* Align to the bottom of the viewport */
+    right: 0;
     z-index: 1000; /* Bring the footer to the front */
+    transform: translateX(-16.5%); /* Shift the footer 10% to the left */
 }
 
 
+.header h2{
+    position: absolute; /* Positions the element relative to the nearest positioned ancestor */
+    width: 20%; /* Specify the width of the footer */
+    top: 0; /* Distance from the top of the screen */
+    left: 20px; /* Distance from the left side of the screen */
+    padding: 0; /* Padding inside the box */
+    background-color: white
+    z-index: 1000; /* Ensures the box is on top of other elements */
+    font-weight: bolder;
+    font-size: 3em;
+    font-family: "Helvetica", sans serif;
+    line-height: 0.95;
+    margin-bottom: 20px; /* Add some space below the form group */
+}
 
-h1 {
-        background-color: rgba(35, 179, 136, 0.365);
-        color: rgb(51, 51, 51);
-        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 8px;
-        text-shadow: rgba(255, 255, 255, 0.7) 2px 2px 4px;
-        text-align: center;
-        font-family: Futura, sans-serif;
-        font-size: 2.5em;
-        padding: 30px;
-    }
+.projTable {
+    margin-top: 20px; /* Add some space above the content */
+    position: absolute; /* Positions the element relative to the nearest positioned ancestor */
+    top: 27%; /* Distance from the top of the screen */
+    text-align: center; /* Align header text to the left */
+}
+
 
 
 h3 {
@@ -141,31 +167,44 @@ table {
 
 /* CSS for table headers */
 th {
-    background-color: #f2f2f2; /* Background color for headers */
-    text-align: centre; /* Align header text to the left */
-    padding: 8px; /* Add padding to the header cells */
+    background-color: black; /* Background color for headers */
+    color: white;
+    text-align: center; /* Align header text to the left */
+    padding: 10px; /* Add padding to the header cells */
     border: 1px solid #ddd; /* Add border to the header cells */
 }
 
 /* CSS for table data cells */
 td {
-    padding: 8px; /* Add padding to the data cells */
+    padding: 12px; /* Add padding to the data cells */
     border: 1px solid #ddd; /* Add border to the data cells */
+    text-align: center;
 }
 
 /* Optional: Style alternating rows differently */
-tr:nth-child(even) {
-    background-color: #f9f9f9; /* Background color for even rows */
+tr th:last-child {
+    border-right: 3px solid #333; /* Thicker and darker border on the right */
+    border-left: 3px solid #333; /* Thicker and darker border on the right */
+    border-top: 3px solid #333; /* Thicker and darker border on the right */
+}
+
+/* Optional: Style alternating rows differently */
+tr td:last-child {
+    background-color: rgba(211, 211, 211, 0.539); /* Background color for even rows */
+    border-right: 3px solid #333; /* Thicker and darker border on the right */
+    border-left: 3px solid #333; /* Thicker and darker border on the right */
+    border-bottom: 3px solid #333; /* Thicker and darker border on the right */
 }
 
 #additionalInput {
     width: 90%; /* Adjust width as needed */
-    height: 95%; 
+    text-align: center;
     padding: 8px; /* Add some padding for better appearance */
-    border-radius: 8px; /* Rounded edges */
-    background-color: #f0f0f0; /* Light grey background color */
+    border-radius: 4px; /* Rounded edges */
+    background-color: white; /* Light grey background color */
     border: 1px solid #ccc; /* Optional: light border */
     box-sizing: border-box; /* Ensure padding doesn't affect width */
+    font-size: 0.9em; 
 }
 
 
