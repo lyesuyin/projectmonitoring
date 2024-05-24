@@ -149,13 +149,12 @@ body {
     text-align: center; /* Align header text to the left */
 }
 
-
-
-h3 {
-    font-size: 1.1em; 
-    font-style: italic; /* Italics */
-
+a {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Inherit color from parent */
 }
+
+
 
 /* CSS for the table */
 table {
