@@ -34,40 +34,47 @@ app.post('/submit', async (req, res) => {
   }
 
   try {
-      // Query the database to check if the projectID exists
-      const project = await prisma.Post.findUnique({
-          where: { projectID: projectID }
-      });
-      console.log('Project data:', project);
+    // Query the database to check if the projectID exists
+    const project = await prisma.Post.findUnique({
+      where: { projectID: projectID }
+    });
 
-      if (!project) {
-        // Render the home.ejs template with an error message
-        return res.render('pages/home', { error: 'Project ID not found.' });
+    console.log('Project data:', project);
+
+    if (!project) {
+      // Render the home.ejs template with an error message
+      return res.render('pages/home', { error: 'Project ID not found.' });
     }
 
-      if (project) {
-          // Check if hasSubmitted field is true
-          if (project.hasSubmitted) {
-              // Render the home.ejs template with an error message
-              return res.render('pages/thanks', { project, submitRoute: false });
-          } else {
-              // Render the project.ejs template with the project data
-              return res.render('pages/project', { project });
-          }
+    // Check if hasSubmitted field is true
+    if (project.hasSubmitted) {
+      // Render the thanks.ejs template with an error message
+      return res.render('pages/thanks', { project, submitRoute: false, completedRoute:false });
+    } else {
+      // Check if all fields are null
+      const fields = ['ach6Mth', 'ach12Mth', 'ach18Mth', 'ach24Mth', 'ach30Mth', 'ach36Mth'];
+      const allFieldsNotNull = fields.every(field => project[field] !== null);
+
+      if (allFieldsNotNull) {
+        // Render the thanks.ejs template with a message
+        return res.render('pages/thanks', { project, submitRoute: false, completedRoute: true });
       } else {
-          // Render the home.ejs template with an error message
-          return res.render('pages/home', { project }, { error: 'Project ID not found.' });
+        // Render the project.ejs template with the project data
+        return res.render('pages/project', { project });
       }
+    }
   } catch (error) {
-      console.error('Error querying the database:', error);
-      return res.render('pages/home', { error: 'An error occurred while querying the database.' });
+    console.error('Error querying the database:', error);
+    return res.render('pages/home', { error: 'An error occurred while querying the database.' });
   }
 });
 
 
+
 app.post('/submitDynamicTable', async (req, res) => {
     const { projectID, inputValue } = req.body;
-  
+
+
     try {
 
       // Retrieve the project from the database
@@ -86,10 +93,6 @@ app.post('/submitDynamicTable', async (req, res) => {
         }
       }
   
-      // If all fields are non-null, return an error
-      if (Object.keys(updateData).length === 0) {
-        return res.status(400).send('No available columns to update');
-      }
   
       // Update the project in the database
       await prisma.Post.update({
@@ -107,7 +110,7 @@ app.post('/submitDynamicTable', async (req, res) => {
 
     // Render the thanks page with the updated project data
     console.log('Rendering thanks page with updated project data:', updatedProject);
-    res.render('pages/thanks', { project: updatedProject, submitRoute: true });
+    res.render('pages/thanks', { project: updatedProject, submitRoute: true, completedRoute: false });
   } catch (error) {
     console.error('Error processing form submission:', error);
     if (!res.headersSent) {
@@ -128,7 +131,7 @@ app.get('/thanks', async (req, res) => {
       return res.status(404).send('Project not found');
     }
 
-    res.render('pages/thanks', { project: updatedProject, submitRoute: true });
+    res.render('pages/thanks', { project: updatedProject, submitRoute: true, completedRoute:false });
   } catch (error) {
     console.error('Error retrieving updated project data:', error);
     res.status(500).send('Internal Server Error');

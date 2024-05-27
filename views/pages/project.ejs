@@ -56,6 +56,9 @@
               </tr>
             </tbody>
           </table>
+          <% if (typeof error !== 'undefined') { %>
+            <p style="color: red;"><%= error %></p>
+        <% } %>
     <% } else { %>
         <p>No project data available.</p>
     <% } %>

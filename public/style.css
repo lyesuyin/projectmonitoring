@@ -115,10 +115,9 @@ body {
     width: 60%; /* Specify the width of the footer */
     background-color: #c9c3c31f; /* Background color */
     color: #15070793; /* Text color */
-    padding: 5px; /* Padding for spacing */
+    padding: 10px; /* Padding for spacing */
     text-align: left; /* Text alignment */
     font-size: smaller; /* Smaller font size */
-    font-style: italic; /* Italics */
     position: fixed; /* Fixed position */
     bottom: 0; /* Align to the bottom of the viewport */
     right: 0;
@@ -215,10 +214,10 @@ footer p {
     width: 100%; /* Full width */
     background-color: #c9c3c31f; 
     color: #15070793; /* White font color */
-    padding: 5px; /* Add padding for spacing */
+    padding: 10px; /* Add padding for spacing */
     text-align: center; /* Center-align text */
     font-size: smaller; /* Smaller font size */
-    font-style: italic; /* Italics */
+   
     left: 50%; /* Position the left edge at the center */
     transform: translateX(-50%); /* Adjust to center */
 }

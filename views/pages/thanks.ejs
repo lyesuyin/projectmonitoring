@@ -24,13 +24,19 @@
     <div class="projTable">
     
 
-    <% if (submitRoute) { %>
-        <!-- Elements to display when rendered from /submit route -->
+      <% if (submitRoute && !completedRoute) { %>
+        <!-- Elements to display when rendered from /submit route and not completedRoute -->
         <p>Thank you for submission.</p>
-    <% } else { %>
-        <!-- Elements to display when rendered from /thanks route -->
+      <% } %>
+      <% if (completedRoute) { %>
+        <!-- Elements to display when all fields are not null -->
+        <p>You have submitted all the required returns.</p>
+      <% } else if (!submitRoute) { %>
+        <!-- Elements to display when rendered from /thanks route but not completedRoute -->
         <p>Your project achievement has already been successfully recorded:</p>
-    <% } %>
+      <% } %>
+      
+      
   
 
     <% if (project) { %>
